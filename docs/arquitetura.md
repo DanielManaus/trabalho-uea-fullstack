@@ -1,31 +1,32 @@
 # Arquitetura
 
-## Visao geral
+Este projeto usa a aplicacao OrbitBoard, que veio como base para o trabalho do modulo 5.
 
-O OrbitBoard e uma aplicacao full stack didatica para acompanhamento de projetos, tarefas e equipe. A solucao foi mantida com dados em memoria para concentrar o trabalho na integracao HTTP/JSON, configuracao de ambiente e execucao em containers.
+A ideia da aplicacao e simples: controlar projetos, tarefas e pessoas da equipe. O front-end mostra as telas e o back-end guarda os dados em memoria.
 
-## Camadas
+## Partes do projeto
 
-| Camada | Tecnologia | Responsabilidade |
-|---|---|---|
-| Front-end | React 18, Vite, React Router | Renderizar telas, formularios, filtros e estados de carregamento, sucesso e erro. |
-| Back-end/API | ASP.NET Core 8 Web API | Expor endpoints REST, validar entradas, aplicar regras simples e retornar JSON. |
-| Dados | Servico em memoria | Guardar projetos, tarefas e integrantes enquanto a API esta em execucao. |
-| Infraestrutura | Docker, Docker Compose, Nginx | Construir e executar front-end e back-end com portas e variaveis documentadas. |
+- Front-end: React com Vite.
+- Back-end: API em ASP.NET Core 8.
+- Dados: ficam em memoria, entao reiniciam quando a API reinicia.
+- Docker: usado para subir front-end e back-end juntos.
 
-## Fluxo de integracao
+## Como uma tela carrega dados
 
-1. O usuario acessa o front-end em `http://localhost:5173`.
-2. O React usa `VITE_API_URL` para chamar a API em `http://localhost:5200`.
-3. A API responde em JSON e trata erros com `ProblemDetails`.
-4. O front-end interpreta sucesso, erro e carregamento para atualizar a interface.
+1. A pessoa abre o front-end em `http://localhost:5173`.
+2. O front-end chama a API em `http://localhost:5200`.
+3. A API retorna JSON.
+4. A tela mostra os dados ou uma mensagem de erro.
 
-## Diagrama
+Exemplo: na tela de tarefas, o React chama `GET /api/tasks` e monta o quadro com as tarefas por status.
 
-```mermaid
-flowchart LR
-    User["Usuario"] --> Front["Frontend React / Nginx :5173"]
-    Front --> Api["Backend ASP.NET Core :5200"]
-    Api --> Store["Dados em memoria"]
-    Api --> Swagger["Swagger / OpenAPI"]
-```
+## Portas usadas
+
+- Front-end: `5173`
+- API: `5200`
+- Swagger: `http://localhost:5200/swagger`
+- Health check: `http://localhost:5200/health`
+
+## Observacao
+
+Nao usamos banco real porque o foco do trabalho era a integracao full stack, Docker e comunicacao entre front-end e API.

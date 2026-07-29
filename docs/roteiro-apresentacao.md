@@ -1,66 +1,99 @@
 # Roteiro de apresentacao
 
-Tempo sugerido: 8 a 12 minutos.
+Tempo esperado: cerca de 8 a 12 minutos.
 
-## 1. Abertura
+## 1. Inicio
 
-Apresentar o nome OrbitBoard, os integrantes da equipe e o objetivo: demonstrar uma aplicacao full stack integrada com front-end, back-end, API documentada e Docker Compose.
+Falar o nome do projeto, OrbitBoard, e os integrantes:
+
+- Daniel Oliveira da Silva
+- Paulo Messias Martins Dourado
+- Andre de Alencar Marques
+- Adriano Brandao Mourao
+
+Depois explicar que o objetivo foi rodar e entender uma aplicacao full stack com front-end, API e Docker.
 
 ## 2. Arquitetura
 
-Explicar as camadas:
+Explicar de forma curta:
 
-- Front-end React/Vite.
-- Back-end ASP.NET Core 8.
+- React/Vite no front-end.
+- ASP.NET Core 8 no back-end.
 - Dados em memoria.
-- Docker Compose executando os dois servicos.
+- Docker Compose para subir tudo junto.
 
-## 3. Demonstracao da aplicacao
+## 3. Mostrar a aplicacao
 
-1. Abrir `http://localhost:5173`.
-2. Mostrar dashboard.
-3. Criar ou editar projeto.
-4. Criar tarefa.
-5. Filtrar tarefas e alterar status.
-6. Mostrar tratamento de erro com projeto duplicado ou exclusao bloqueada.
+Abrir:
 
-## 4. Demonstracao da API
+```text
+http://localhost:5173
+```
 
-1. Abrir `http://localhost:5200/swagger`.
-2. Mostrar `GET /api/dashboard`.
-3. Mostrar `GET /api/projects`.
-4. Mostrar `POST /api/tasks` ou `PATCH /api/tasks/{id}/status`.
-5. Abrir `http://localhost:5200/health`.
+Mostrar:
 
-## 5. Docker e ambiente
+- dashboard;
+- tela de projetos;
+- criacao de projeto;
+- tela de tarefas;
+- criacao de tarefa;
+- filtro;
+- alteracao de status;
+- tela de equipe.
 
-Comentar:
+## 4. Mostrar a API
 
-- `backend/Dockerfile` publica a API .NET.
-- `frontend/Dockerfile` gera build React e serve por Nginx.
-- `docker-compose.yml` sobe os dois containers.
-- Variaveis principais: `BACKEND_PORT`, `FRONTEND_PORT`, `FRONTEND_ORIGIN`, `VITE_API_URL`.
+Abrir:
 
-## 6. Testes e evidencias
+```text
+http://localhost:5200/swagger
+```
 
-Mostrar `docs/evidencias-testes.md`, prints coletados e logs dos containers.
+Mostrar pelo menos:
 
-## 7. Ajustes realizados
+- `GET /health`
+- `GET /api/dashboard`
+- `GET /api/projects`
+- `GET /api/tasks`
 
-- Criacao de Dockerfiles.
-- Criacao do Compose.
-- CORS configuravel.
-- Documentacao da arquitetura, contrato da API, testes e roteiro.
-- CI simples no GitHub Actions para build de backend, frontend e imagens Docker.
+## 5. Docker
 
-## 8. Dificuldades
+Explicar que foram criados:
 
-Explicar de forma objetiva:
+- `backend/Dockerfile`
+- `frontend/Dockerfile`
+- `docker-compose.yml`
 
-- Entender a comunicacao entre portas do navegador e containers.
-- Ajustar CORS para permitir a origem correta do front-end.
-- Separar variaveis de ambiente de desenvolvimento local e Docker.
+Comando principal:
 
-## 9. Fechamento
+```bash
+docker compose up --build
+```
 
-Informar contribuicao de cada integrante e reforcar que todos conhecem o fluxo da aplicacao, endpoints, Docker e evidencias.
+## 6. Testes
+
+Mostrar a pasta `docs/prints` e os logs em `docs/evidencias-api`.
+
+Testes feitos:
+
+- API respondendo.
+- Swagger abrindo.
+- Front-end carregando dados da API.
+- Cadastro de projeto.
+- Erro de projeto duplicado.
+- Cadastro de tarefa.
+- Filtro e mudanca de status.
+- Logs do Docker Compose.
+
+## 7. Dificuldades
+
+Pontos para comentar:
+
+- Entender as portas do front-end e back-end.
+- Ajustar CORS.
+- Entender a diferenca entre rodar local e rodar no Docker.
+- Organizar as evidencias para a entrega.
+
+## 8. Final
+
+Fechar dizendo que o grupo conseguiu executar a aplicacao, testar a integracao e documentar os principais pontos pedidos no trabalho.

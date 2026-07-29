@@ -1,53 +1,65 @@
 # Contrato da API
 
-Base local: `http://localhost:5200`
+URL base local:
 
-Swagger: `http://localhost:5200/swagger`
+```text
+http://localhost:5200
+```
 
-Health check: `GET /health`
+Swagger:
 
-## Dashboard
+```text
+http://localhost:5200/swagger
+```
 
-| Metodo | Endpoint | Descricao |
-|---|---|---|
-| GET | `/api/dashboard` | Retorna metricas gerais e tarefas recentes. |
+## Endpoints principais
 
-## Projetos
+### Health
 
-| Metodo | Endpoint | Descricao |
-|---|---|---|
-| GET | `/api/projects` | Lista projetos. |
-| GET | `/api/projects/{id}` | Busca projeto por id. |
-| POST | `/api/projects` | Cria projeto. |
-| PUT | `/api/projects/{id}` | Atualiza projeto. |
-| DELETE | `/api/projects/{id}` | Remove projeto sem tarefas vinculadas. |
+- `GET /health`
+- Usado para ver se a API esta rodando.
 
-Exemplo de criacao:
+### Dashboard
+
+- `GET /api/dashboard`
+- Retorna os totais de projetos, tarefas, concluidas e atrasadas.
+
+### Projetos
+
+- `GET /api/projects`
+- `GET /api/projects/{id}`
+- `POST /api/projects`
+- `PUT /api/projects/{id}`
+- `DELETE /api/projects/{id}`
+
+No front-end usamos esses endpoints para listar, criar, editar e excluir projetos.
+
+Exemplo de projeto:
 
 ```json
 {
-  "name": "Projeto final Modulo 5",
-  "description": "Organizacao da entrega full stack",
-  "status": "Active",
-  "startDate": "2026-07-20",
-  "endDate": "2026-07-29"
+  "name": "Projeto UEA Teste",
+  "description": "Projeto usado para testar a integracao full stack.",
+  "status": "Active"
 }
 ```
 
-## Tarefas
+### Tarefas
 
-| Metodo | Endpoint | Descricao |
-|---|---|---|
-| GET | `/api/tasks` | Lista tarefas e aceita filtros. |
-| GET | `/api/tasks/{id}` | Busca tarefa por id. |
-| POST | `/api/tasks` | Cria tarefa. |
-| PUT | `/api/tasks/{id}` | Atualiza tarefa. |
-| PATCH | `/api/tasks/{id}/status` | Altera somente o status. |
-| DELETE | `/api/tasks/{id}` | Remove tarefa. |
+- `GET /api/tasks`
+- `GET /api/tasks/{id}`
+- `POST /api/tasks`
+- `PUT /api/tasks/{id}`
+- `PATCH /api/tasks/{id}/status`
+- `DELETE /api/tasks/{id}`
 
-Filtros em `GET /api/tasks`: `projectId`, `status`, `priority`, `assigneeId`, `search`.
+A listagem de tarefas aceita filtros como:
 
-Exemplo de alteracao de status:
+```text
+projectId, status, priority, assigneeId, search
+```
+
+Exemplo para alterar status:
 
 ```json
 {
@@ -55,12 +67,11 @@ Exemplo de alteracao de status:
 }
 ```
 
-## Equipe
+### Equipe
 
-| Metodo | Endpoint | Descricao |
-|---|---|---|
-| GET | `/api/team-members` | Lista integrantes cadastrados em memoria. |
+- `GET /api/team-members`
+- Retorna os membros cadastrados na memoria da API.
 
-## Padrao de erros
+## Erros
 
-A API usa respostas JSON com `ProblemDetails` para erros de validacao, conflitos, itens nao encontrados e falhas inesperadas. O front-end le `detail` ou `title` e exibe a mensagem para o usuario.
+A API retorna erro em JSON. No front-end testamos, por exemplo, criar um projeto com nome repetido. Nesse caso aparece uma mensagem avisando que ja existe projeto com esse nome.
