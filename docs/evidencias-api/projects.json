@@ -1,0 +1,57 @@
+﻿{
+    "value":  [
+                  {
+                      "id":  "bfec6189-36a7-4ec8-b3d2-2d1b77207d73",
+                      "name":  "Projeto Evidencia UEA",
+                      "description":  "Projeto criado pelo formulario para validar integracao entre front-end e API.",
+                      "status":  "Active",
+                      "startDate":  "2026-07-29",
+                      "dueDate":  null,
+                      "ownerId":  "53fea959-d0f8-464c-8ef0-e0e2d13241dd",
+                      "ownerName":  "Ana Ribeiro",
+                      "totalTasks":  1,
+                      "completedTasks":  0,
+                      "createdAt":  "2026-07-29T21:17:59.7985456+00:00"
+                  },
+                  {
+                      "id":  "0c4bf28b-ff7d-4465-8dd5-149aee156a49",
+                      "name":  "Portal de Aprendizagem",
+                      "description":  "Plataforma para organizar trilhas, conteúdos e acompanhamento de progresso.",
+                      "status":  "Active",
+                      "startDate":  "2026-06-24",
+                      "dueDate":  "2026-08-26",
+                      "ownerId":  "53fea959-d0f8-464c-8ef0-e0e2d13241dd",
+                      "ownerName":  "Ana Ribeiro",
+                      "totalTasks":  2,
+                      "completedTasks":  0,
+                      "createdAt":  "2026-07-29T20:11:01.6354456+00:00"
+                  },
+                  {
+                      "id":  "d70f0310-f219-444f-bc91-18dc2e17d6a6",
+                      "name":  "Agenda de Eventos",
+                      "description":  "Sistema para publicação, inscrição e acompanhamento de eventos comunitários.",
+                      "status":  "Active",
+                      "startDate":  "2026-07-11",
+                      "dueDate":  "2026-09-12",
+                      "ownerId":  "6a8163b8-73d8-4271-b0b1-a9849b8f8b25",
+                      "ownerName":  "Bruno Martins",
+                      "totalTasks":  2,
+                      "completedTasks":  1,
+                      "createdAt":  "2026-07-29T20:11:01.6365747+00:00"
+                  },
+                  {
+                      "id":  "452ed9ff-89a3-47fc-b4f2-e25d313b981f",
+                      "name":  "Biblioteca Digital",
+                      "description":  "Catálogo colaborativo de livros, avaliações e listas de leitura.",
+                      "status":  "Planning",
+                      "startDate":  "2026-08-05",
+                      "dueDate":  "2026-10-27",
+                      "ownerId":  "026c4c38-c02b-43fb-8332-2b5f43d3c6ab",
+                      "ownerName":  "Carla Nunes",
+                      "totalTasks":  1,
+                      "completedTasks":  0,
+                      "createdAt":  "2026-07-29T20:11:01.6365764+00:00"
+                  }
+              ],
+    "Count":  4
+}

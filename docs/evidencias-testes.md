@@ -1,20 +1,41 @@
 # Evidencias e testes manuais
 
-Use este roteiro para registrar prints antes da apresentacao. Salve as imagens nesta pasta ou em uma subpasta `docs/prints/`.
+Use este roteiro para registrar prints antes da apresentacao. As primeiras evidencias ja foram salvas em `docs/prints/` e `docs/evidencias-api/`.
+
+## Evidencias geradas
+
+| Evidencia | Arquivo |
+|---|---|
+| Dashboard do front-end | `docs/prints/01-dashboard-frontend.png` |
+| Swagger da API | `docs/prints/02-swagger-api.png` |
+| Tela de projetos | `docs/prints/03-projetos-frontend.png` |
+| Tela de tarefas | `docs/prints/04-tarefas-frontend.png` |
+| Tela de equipe | `docs/prints/05-equipe-frontend.png` |
+| Projeto criado pelo front-end | `docs/prints/06-projeto-criado-frontend.png` |
+| Erro de projeto duplicado tratado no front-end | `docs/prints/07-erro-projeto-duplicado.png` |
+| Tarefa criada pelo front-end | `docs/prints/08-tarefa-criada-frontend.png` |
+| Filtro de tarefas aplicado | `docs/prints/09-filtro-tarefas.png` |
+| Status de tarefa alterado | `docs/prints/10-status-tarefa-alterado.png` |
+| Health check da API em JSON | `docs/evidencias-api/health-check.json` |
+| Dashboard da API em JSON | `docs/evidencias-api/dashboard.json` |
+| Projetos da API em JSON | `docs/evidencias-api/projects.json` |
+| Tarefas da API em JSON | `docs/evidencias-api/tasks.json` |
+| Contrato OpenAPI/Swagger em JSON | `docs/evidencias-api/swagger-openapi.json` |
+| Resumo da validacao local | `docs/evidencias-api/validacao-local.txt` |
 
 ## Testes realizados
 
 | Cenario | Passos | Resultado esperado | Evidencia |
 |---|---|---|---|
-| Health check da API | Acessar `http://localhost:5200/health` | JSON com `status: healthy` | Print do navegador ou terminal |
-| Swagger | Acessar `http://localhost:5200/swagger` | Tela Swagger com endpoints | Print do Swagger |
-| Dashboard | Abrir `http://localhost:5173` | Cards e tarefas carregados | Print do front-end |
-| Criar projeto | Enviar formulario de projeto valido | Projeto aparece na lista | Print antes/depois |
-| Erro de conflito | Criar projeto com nome repetido | Mensagem de erro `409` exibida | Print do erro |
-| Criar tarefa | Enviar tarefa vinculada a um projeto | Tarefa aparece no quadro | Print do quadro |
-| Filtros | Filtrar por status, prioridade ou texto | Lista muda conforme filtro | Print do filtro |
-| Alterar status | Mover/alterar status de uma tarefa | Status atualizado na API e tela | Print do resultado |
-| Logs dos containers | Rodar `docker compose logs backend frontend` | Logs sem erro critico | Print ou trecho dos logs |
+| Health check da API | Acessar `http://localhost:5200/health` | JSON com `status: healthy` | `docs/evidencias-api/health-check.json` |
+| Swagger | Acessar `http://localhost:5200/swagger` | Tela Swagger com endpoints | `docs/prints/02-swagger-api.png` |
+| Dashboard | Abrir `http://localhost:5173` | Cards e tarefas carregados | `docs/prints/01-dashboard-frontend.png` |
+| Criar projeto | Enviar formulario de projeto valido | Projeto aparece na lista | `docs/prints/06-projeto-criado-frontend.png` |
+| Erro de conflito | Criar projeto com nome repetido | Mensagem de erro `409` exibida | `docs/prints/07-erro-projeto-duplicado.png` |
+| Criar tarefa | Enviar tarefa vinculada a um projeto | Tarefa aparece no quadro | `docs/prints/08-tarefa-criada-frontend.png` |
+| Filtros | Filtrar por status, prioridade ou texto | Lista muda conforme filtro | `docs/prints/09-filtro-tarefas.png` |
+| Alterar status | Mover/alterar status de uma tarefa | Status atualizado na API e tela | `docs/prints/10-status-tarefa-alterado.png` |
+| Logs dos containers | Rodar `docker compose logs backend frontend` | Logs sem erro critico | Pendente: Docker nao esta disponivel neste terminal |
 
 ## Comandos usados
 
@@ -24,6 +45,14 @@ curl http://localhost:5200/health
 curl http://localhost:5200/api/dashboard
 docker compose ps
 docker compose logs backend frontend
+```
+
+Quando o Docker Desktop estiver instalado, gere a evidencia final de containers com:
+
+```bash
+docker compose up --build
+docker compose ps
+docker compose logs backend frontend > docs/evidencias-api/docker-compose-logs.txt
 ```
 
 ## Problemas encontrados e correcoes
